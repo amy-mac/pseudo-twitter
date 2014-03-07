@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
+
+  def to_param
+    name
+  end
 end
