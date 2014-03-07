@@ -1,0 +1,23 @@
+<% provide(:title, 'New User Sign-Up') %>
+
+<div class="row">
+  <div class="small-12 medium-8 medium-centered columns white-bg">
+    <h1>Sign Up</h1>
+
+    <%= form_for @user do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true, placeholder: 'Please choose a unique name' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, required: true %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, required: true %>
+
+      <%= f.submit "Submit", class: 'button radius' %>
+    <% end %>
+  </div>
+</div>

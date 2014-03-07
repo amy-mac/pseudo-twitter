@@ -1,0 +1,19 @@
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <div class="small-12 medium-3 columns white-bg">
+    <%= gravatar_for @user %>
+    <h2>@<%= @user.name %></h2>
+  </div>
+
+  <div class="small-12 medium-8 medium-offset-1 columns white-bg">
+
+    <% if @tweets.length == 0 %>
+      <% if current_user %>
+        <p>You have no tweets yet. Why don't you create one?</p>
+      <% else %>
+        <p>This user has no tweets yet.</p>
+    <% end %>
+  </div>
+
+</div>

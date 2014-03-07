@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     @user = User.create(params[:user])
 
     if @user.errors.empty?
-      redirect_to user_path(@user.name)
+      redirect_to user_path(@user.name), notice: 'Thanks for signing up!'
     else
+      flash.now.alert = @user.errors.full_messages[0]
       render :new
     end
 
