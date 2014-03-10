@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, only: [:show, :new, :create]
 
   def show
     @user = User.find_by_name(params[:id])
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.create(params[:user])
 
     if @user.errors.empty?
+      sign_in(@user)
       redirect_to user_path(@user.name), notice: 'Thanks for signing up!'
     else
       flash.now.alert = @user.errors.full_messages[0]

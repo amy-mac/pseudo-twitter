@@ -1,0 +1,19 @@
+<% provide(:title, 'Sign-In') %>
+
+<div class="row">
+  <div class="small-12 medium-8 medium-centered columns white-bg">
+    <h1>Sign In</h1>
+
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, required: true %>
+
+      <%= f.submit 'Sign In', class: 'button radius' %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+  </div>
+</div>

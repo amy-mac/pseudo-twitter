@@ -14,6 +14,11 @@ describe User do
     it 'has a properly formatted email address' do
       expect(build(:user, email: 'test.com')).to have(1).errors_on(:email)
     end
+
+    it 'generates a :remember_token before saving' do
+      user = create(:user)
+      expect(user.remember_token).to_not eq(nil)
+    end
   end
 
   context 'invalid user entry' do
@@ -42,7 +47,7 @@ describe User do
     it 'has no password_confirmation' do
       expect(build(:user, password_confirmation: nil)).to have(1).errors_on(:password_confirmation)
     end
-    
+
     it 'has a password and password_confirmation that don\'t match' do
       user = build(:user, password: 'testing', password_confirmation: 'foobar')
       expect(user).to have(1).errors_on(:password)

@@ -25,12 +25,18 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="right">
-            <li class="has-dropdown">
-              <a href="#">User Stuff</a>
-              <ul class="dropdown">
-                <li><a href="#">Profile</a></li>
-              </ul>
-            </li>
+            <% if signed_in? %>
+              <li><%#= link_to 'New Tweet', new_tweet_path %></li>
+              <li class="has-dropdown">
+                <a href="#">@<%= current_user.name %></a>
+                <ul class="dropdown">
+                  <li><%= link_to 'Your Profile', user_path(current_user.name) %>
+                    </li>
+                  <li><%= link_to 'Sign Out', session_path(current_user), method: :delete %>
+              </li>
+            <% else %>
+              <li><%= link_to 'Sign In', new_session_path %></li>
+            <% end %>
           </ul>
 
         </section>

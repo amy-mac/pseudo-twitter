@@ -8,12 +8,13 @@
 
   <div class="small-12 medium-8 medium-offset-1 columns white-bg">
 
-    <% if @tweets.length == 0 %>
-      <% if current_user %>
+    <%# if @tweets.length == 0 %>
+      <% if signed_in? %>
         <p>You have no tweets yet. Why don't you create one?</p>
       <% else %>
         <p>This user has no tweets yet.</p>
-    <% end %>
+      <% end %>
+    <%# end %>
   </div>
 
 </div>
