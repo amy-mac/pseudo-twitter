@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
+  has_many :tweets
+
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, presence: true,
@@ -19,7 +21,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
