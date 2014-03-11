@@ -63,8 +63,8 @@ $secondary-color: #988FDE;
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
-// $global-rounded: 1000px;
+$global-radius: 3px;
+$global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
 // $shiny-edge-size: 0 1px 0;
@@ -120,7 +120,7 @@ $secondary-color: #988FDE;
 // $header-font-family: $body-font-family;
 // $header-font-weight: normal;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: #222;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -142,14 +142,14 @@ $secondary-color: #988FDE;
 // $subheader-bottom-margin: .5rem;
 
 // A general <small> styling
-// $small-font-size: 60%;
-// $small-font-color: scale-color($header-font-color, $lightness: 35%);
+$small-font-size: 90%;
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
 
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
 // $paragraph-font-size: 1rem;
-// $paragraph-line-height: 1.6;
+$paragraph-line-height: 1.3;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
@@ -170,7 +170,7 @@ $secondary-color: #988FDE;
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: rem-calc(20);
+$hr-margin: rem-calc(10);
 
 // We use these to style lists
 // $list-style-position: outside;
@@ -543,7 +543,7 @@ $secondary-color: #988FDE;
 // We use this to control the margins and padding of the inline list.
 // $inline-list-top-margin: 0;
 // $inline-list-opposite-margin: 0;
-// $inline-list-bottom-margin: rem-calc(17);
+$inline-list-bottom-margin: rem-calc(9);
 // $inline-list-default-float-margin: rem-calc(-22);
 
 // $inline-list-padding: 0;
@@ -1202,8 +1202,52 @@ $topbar-link-bg-hover: #3C385A;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 
+aside {
+  padding: rem-calc(15)
+}
+
 .white-bg {
+  padding-bottom: rem-calc(20);
+  -webkit-border-radius: $global-radius;
+  -moz-border-radius: $global-radius;
+  border-radius: $global-radius;
   background-color: #fff;
+}
+
+.muted {
+  font-size: 95%;
+  color: gray;
+}
+
+.tweet {
+  padding: rem-calc(10);
+  border-bottom: 1px solid #CCC;
+}
+
+.tweet:last-child {
+  border-bottom: none;
+}
+
+.tweet-header {
+  p strong {
+    padding-top: rem-calc(10);
+    font-size: 90%;
+  }
+}
+
+.large-tweet {
+  padding: rem-calc(20);
+  p {
+    font-size: rem-calc(30);
+    font-weight: 200;
+  }
+}
+
+.gravatar {
+  margin-right: rem-calc(10);
+  -webkit-border-radius: $global-rounded;
+  -moz-border-radius: $global-rounded;
+  border-radius: $global-rounded;
 }
 
 @import 'foundation';

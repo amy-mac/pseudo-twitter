@@ -1,0 +1,29 @@
+<% provide(:title, "Tweet: #{@tweet.id}") %>
+
+<div class="row">
+  <div class="small-12 medium-8 medium-centered columns white-bg">
+
+    <div class="large-tweet">
+      <div class="tweet-header clearfix">
+        <%= gravatar_for @tweet.user, 'gravatar left', size: 40 %>
+        <p><strong>@<%= @tweet.user.name %></strong></p>
+      </div>
+
+      <p><%= @tweet.tweet_text %></p>
+
+      <div class="tweet-footer">
+        <!-- options for tweet creator to manipulate tweet -->
+        <% if @tweet.user == current_user %>
+          <ul class="inline-list muted">
+            <li><%= link_to 'edit', edit_tweet_path(@tweet) %></li>
+            <li><%= link_to 'delete', tweet_path(@tweet),
+              method: :delete, confirm: 'Are you sure you want to delete this?' %></li>
+          </ul>
+        <% end %>
+
+        <span class="muted"><%= @tweet.created_at.strftime('%l:%M %p - %B %e, %Y') %></span>
+      </div>
+
+    </div>
+  </div>
+</div>

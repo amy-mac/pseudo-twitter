@@ -1,6 +1,8 @@
 FinalApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :tweets, except: [:index]
+  
   root :to => 'static_pages#index'
 
 

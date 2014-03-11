@@ -1,0 +1,12 @@
+<% provide(:title, "New tweet for #{current_user.name}") %>
+
+<div class="row">
+  <div class="small-12 medium-8 medium-centered columns white-bg">
+    <h1>New Tweet</h2>
+
+    <%= form_for @tweet do |f| %>
+      <%= f.text_area :tweet_text, class: 'radius', rows: 10, placeholder: 'Compose your tweet', required: true %>
+      <%= f.submit 'Tweet', class: 'button button-primary radius' %>
+    <% end %>
+  </div>
+</div>

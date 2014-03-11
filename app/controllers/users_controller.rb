@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:show, :new, :create]
 
   def show
-    @user = User.find_by_name(params[:id])
+    @user = User.includes(:tweets).find_by_name(params[:id])
+    @tweets_sorted = @user.tweets.reverse
   end
 
   def new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(params[:user])
 
-    if @user.errors.empty?
+    if @user.save
       sign_in(@user)
       redirect_to user_path(@user.name), notice: 'Thanks for signing up!'
     else
