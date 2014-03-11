@@ -1,8 +1,9 @@
 FinalApp::Application.routes.draw do
-  resources :users
+  resources :users do
+    resources :tweets, except: [:index]
+  end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tweets, except: [:index]
-  
+
   root :to => 'static_pages#index'
 
 
@@ -12,11 +13,5 @@ FinalApp::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
 end
