@@ -41,6 +41,10 @@ describe User do
         expect(build(:user, email: nil)).to have(2).errors_on(:email)
       end
 
+      it 'has spaces in the name' do
+        expect(build(:user, name: 'Example User')).to have(1).errors_on(:name)
+      end
+
       it 'is a duplicate email address' do
         expect(build(:user, email: user.email)).to have(1).errors_on(:email)
       end

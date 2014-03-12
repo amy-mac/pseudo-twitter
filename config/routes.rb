@@ -1,7 +1,13 @@
 FinalApp::Application.routes.draw do
   resources :users do
-    resources :tweets, except: [:index]
+    member do
+      get :following, :followers
+    end
   end
+
+  resources :tweets, except: [:index]
+  # match 'users/:name' => 'users#show'
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'static_pages#index'
