@@ -33,7 +33,7 @@ describe SessionsController do
 
     context 'invalid user input' do
       it 'does not create a new session' do
-        expect(cookies[:remember_token]).to eq(nil)
+        expect(session[:user_id]).to eq(nil)
       end
 
       it 're-renders the :new template' do
@@ -49,7 +49,7 @@ describe SessionsController do
 
     it 'deletes the current user session' do
       delete :destroy, id: @user
-      expect(cookies[:remember_token]).to eq(nil)
+      expect(session[:user_id]).to eq(nil)
     end
 
     it 'redirects to home page' do

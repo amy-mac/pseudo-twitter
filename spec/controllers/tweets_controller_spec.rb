@@ -3,6 +3,8 @@ require 'spec_helper'
 describe TweetsController do
   include SessionsHelper
 
+  let(:current_user) { create(:user) }
+  
   describe "GET #new" do
     it 'renders the :new page' do
       get :new

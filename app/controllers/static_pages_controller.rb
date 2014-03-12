@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
   skip_before_filter :authorize
-  
-  def index
 
+  def index
   end
 
 end

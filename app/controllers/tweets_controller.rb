@@ -42,12 +42,7 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == Tweet.find(params[:id]).user_id
-      Tweet.find(params[:id]).destroy()
-      redirect_to user_path(current_user.name)
-    else
-      flash.now.alert = "You are not authorized to delete this tweet"
-      render :show
-    end
+    current_user.tweets.find(params[:id]).destroy()
+    redirect_to user_path(current_user.name)
   end
 end

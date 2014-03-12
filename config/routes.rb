@@ -6,15 +6,13 @@ FinalApp::Application.routes.draw do
   end
 
   resources :tweets, except: [:index]
-  # match 'users/:name' => 'users#show'
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  resources :relationships, only: [:create, :destroy]
+
   root :to => 'static_pages#index'
 
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

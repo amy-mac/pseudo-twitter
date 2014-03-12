@@ -1,0 +1,23 @@
+<% provide(:title, @title) %>
+
+<div class="row">
+  <%= render 'shared/sidebar' %>
+
+  <div class="small-12 medium-8 medium-offset-1 columns white-bg">
+    <h3><%= @title %></h3>
+    <hr>
+
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <div class="small-12 tweet clearfix">
+
+          <%= link_to gravatar_for(user, "left gravatar"), user_path(user.name) %>
+
+          <strong><%= link_to "@#{user.name}", user_path(user.name) %></strong>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

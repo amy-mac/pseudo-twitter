@@ -1,0 +1,17 @@
+<% @user ||= current_user %>
+<div class="small-12 medium-3 columns white-bg">
+  <aside>
+    <div class="text-center">
+      <%= gravatar_for @user, "gravatar", size: 150 %>
+    </div>
+    <h2>@<%= @user.name %></h2>
+
+    <ul class="no-bullet">
+      <li><%= link_to 'Tweets', user_path(@user.name) %> <%= @user.tweets.count %></li>
+      <li id="following"><%= link_to 'Following', following_user_path(@user) %> <%= @user.followed_users.count %></li>
+      <li id="followers"><%= link_to 'Followers', followers_user_path(@user) %> <%= @user.followers.count %></li>
+    </ul>
+
+    <%= render 'shared/follow_form' if signed_in? %>
+  </aside>
+</div>

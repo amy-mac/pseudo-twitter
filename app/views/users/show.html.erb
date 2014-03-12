@@ -1,20 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <div class="small-12 medium-3 columns white-bg">
-    <aside>
-      <div class="text-center">
-        <%= gravatar_for @user, "gravatar", size: 150 %>
-      </div>
-      <h2>@<%= @user.name %></h2>
-
-      <ul class="no-bullet">
-        <li>Tweets <%= @user.tweets.count %></li>
-        <li>Following</li>
-        <li>Followers</li>
-      </ul>
-    </aside>
-  </div>
+  <%= render 'shared/sidebar' %>
 
   <div class="small-12 medium-8 medium-offset-1 columns white-bg">
     <h3>Tweets</h3>
@@ -31,7 +18,7 @@
       <% @tweets_sorted.each do |tweet| %>
         <div class="small-12 tweet clearfix">
 
-          <%= gravatar_for(@user, "left gravatar") %>
+          <%= gravatar_for(tweet.user, "left gravatar") %>
 
           <b>@<%= @user.name %></b><span class="muted"> - <%= tweet.created_at.strftime('%B %e, %Y') %></span>
 

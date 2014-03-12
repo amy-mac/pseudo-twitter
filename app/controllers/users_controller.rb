@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:show, :new, :create]
 
   def show
-    @user = User.includes(:tweets).find_by_name(params[:id])
+    @user = User.includes(:tweets).where(['name LIKE ?', params[:id]]).first
     @tweets_sorted = @user.tweets.reverse
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to user_path(@user.name), notice: 'Thanks for signing up!'
+      redirect_to user_path(@user), notice: 'Thanks for signing up!'
     else
       flash.now.alert = @user.errors.full_messages[0]
       render :new
@@ -33,5 +33,19 @@ class UsersController < ApplicationController
 
   def destroy
 
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.where(['name LIKE ?', params[:id]]).first
+    @users = @user.followers
+    render 'show_follow'
+  end
+
+  def following
+    @title = "Following"
+    @user = User.where(['name LIKE ?', params[:id]]).first
+    @users = @user.followed_users
+    render 'show_follow'
   end
 end
