@@ -1243,11 +1243,12 @@ aside {
 
 footer {
   margin-top: rem-calc(50);
-  margin-bottom: rem-calc(20);
+  height: rem-calc(40);
 }
 
 .white-bg {
-  padding-bottom: rem-calc(20);
+  padding-top: rem-calc(10);
+  padding-bottom: rem-calc(10);
   -webkit-border-radius: $global-radius;
   -moz-border-radius: $global-radius;
   border-radius: $global-radius;
