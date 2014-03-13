@@ -30,7 +30,9 @@ describe 'Authentication' do
         click_button 'Sign In'
       end
 
+      it { should have_link('Users', href: users_path) }
       it { should have_link('New Tweet', href: new_tweet_path) }
+      it { should have_link('Profile', href: user_path(user)) }
       it { should_not have_link('Sign In', href: new_session_path) }
 
       describe 'followed by signout' do
@@ -57,19 +59,19 @@ describe 'Authentication' do
         end
       end
 
-      describe 'in the relationships controller' do
-        describe 'submitting to the create action' do
-          before do
-            post relationships_path
-          end
-          specify { response.should redirect_to new_session_path }
-        end
-
-        describe 'submitting to the destroy action' do
-          before { delete relationship_path(1) }
-          specify { response.should redirect_to new_session_path }
-        end
-      end
+      # describe 'in the relationships controller' do
+      #   describe 'submitting to the create action' do
+      #     before do
+      #       post relationships_path
+      #     end
+      #     specify { response.should redirect_to new_session_path }
+      #   end
+      #
+      #   describe 'submitting to the destroy action' do
+      #     before { delete relationship_path(1) }
+      #     specify { response.should redirect_to new_session_path }
+      #   end
+      # end
 
     end
     describe 'for signed-in users' do
