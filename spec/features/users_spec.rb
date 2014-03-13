@@ -5,7 +5,7 @@ feature 'Authentication' do
     user = create(:user)
     sign_in(user)
 
-    expect(current_path).to eq(user_path(user.name))
+    expect(current_path).to eq(root_path)
   end
 end
 
