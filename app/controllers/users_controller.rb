@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:show, :new, :create]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.includes(:tweets).where(['name LIKE ?', params[:id]]).first
-    @tweets_sorted = @user.tweets.reverse
   end
 
   def new
