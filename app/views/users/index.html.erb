@@ -1,0 +1,22 @@
+<% provide(:title, "All Users") %>
+
+<div class="row">
+
+  <div class="small-12 medium-8 medium-centered columns white-bg">
+    <h3>All Users</h3>
+    <hr>
+
+    <% @users.each do |user| %>
+      <div class="small-12 tweet clearfix">
+
+        <%= link_to gravatar_for(user, "left gravatar"), user_path(user.name) %>
+
+        <strong><%= link_to "@#{user.name}", user_path(user.name) %></strong>
+
+      </div>
+    <% end %>
+
+    <%= will_paginate %>
+  </div>
+
+</div>

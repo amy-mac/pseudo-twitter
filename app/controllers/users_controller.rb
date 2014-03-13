@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:show, :new, :create]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show

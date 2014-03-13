@@ -26,7 +26,7 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-// $include-html-classes: true;
+$include-html-classes: true;
 // $include-print-styles: true;
 // $include-html-global-classes: $include-html-classes;
 
@@ -52,7 +52,7 @@ $body-bg: #A28AC7;
 // We use these to control text direction settings
 // $text-direction: ltr;
 // $opposite-direction: right;
-// $default-float: left;
+$default-float: left;
 
 // We use these as default colors throughout
 $primary-color: #8893D4;
@@ -731,35 +731,70 @@ $inline-list-bottom-margin: rem-calc(9);
 
 // Pagination
 
-// $include-html-nav-classes: $include-html-classes;
+$include-html-nav-classes: $include-html-classes;
 
 // We use these to control the pagination container
-// $pagination-height: rem-calc(24);
-// $pagination-margin: rem-calc(-5);
+$pagination-height: rem-calc(24);
+$pagination-margin: rem-calc(13);
 
 // We use these to set the list-item properties
-// $pagination-li-float: $default-float;
-// $pagination-li-height: rem-calc(24);
-// $pagination-li-font-color: #222;
-// $pagination-li-font-size: rem-calc(14);
-// $pagination-li-margin: rem-calc(5);
+$pagination-li-float: $default-float;
+$pagination-li-height: rem-calc(24);
+$pagination-li-font-color: #222;
+$pagination-li-font-size: rem-calc(14);
+$pagination-li-margin: rem-calc(2);
 
 // We use these for the pagination anchor links
-// $pagination-link-pad: rem-calc(1 10 1);
-// $pagination-link-font-color: #999;
-// $pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
+$pagination-link-pad: rem-calc(3 10 1);
+$pagination-link-font-color: #999;
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
 
 // We use these for disabled anchor links
-// $pagination-link-unavailable-cursor: default;
-// $pagination-link-unavailable-font-color: #999;
-// $pagination-link-unavailable-bg-active: transparent;
+$pagination-link-unavailable-cursor: default;
+$pagination-link-unavailable-font-color: #999;
+$pagination-link-unavailable-bg-active: transparent;
 
 // We use these for currently selected anchor links
-// $pagination-link-current-background: $primary-color;
-// $pagination-link-current-font-color: #fff;
-// $pagination-link-current-font-weight: bold;
-// $pagination-link-current-cursor: default;
-// $pagination-link-current-active-bg: $primary-color;
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-font-color: #fff;
+$pagination-link-current-font-weight: bold;
+$pagination-link-current-cursor: default;
+$pagination-link-current-active-bg: $primary-color;
+
+.pagination {
+  height: $pagination-height;
+  margin: $pagination-margin;
+  color: $pagination-li-font-color;
+  font-size: $pagination-li-font-size;
+  a, span, em {
+    float: $pagination-li-float;
+    height: $pagination-li-height;
+    margin: $pagination-li-margin;
+    border-radius: $global-radius;
+    -webkit-border-radius: $global-radius;
+    padding: $pagination-link-pad;
+    color: $pagination-link-font-color;
+    &:hover {
+      background-color: $pagination-link-active-bg;
+    }
+  }
+  .disabled {
+    cursor: $pagination-link-unavailable-cursor;
+    color: $pagination-link-unavailable-font-color;
+    &:hover {
+      background-color: $pagination-link-unavailable-bg-active;
+    }
+  }
+  .current {
+    background-color: $pagination-link-current-background;
+    color: $pagination-link-current-font-color;
+    font-weight: $pagination-link-current-font-weight;
+    cursor: $pagination-link-current-cursor;
+    &:hover {
+      background-color: $pagination-link-current-active-bg;
+    }
+  }
+}
 
 // Panels
 
@@ -1124,7 +1159,7 @@ $inline-list-bottom-margin: rem-calc(9);
 // TOP BAR
 //
 
-// $include-html-top-bar-classes: $include-html-classes;
+$include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
 $topbar-bg-color: #4A456D;
@@ -1204,6 +1239,11 @@ $topbar-link-bg-hover: #3C385A;
 
 aside {
   padding: rem-calc(15)
+}
+
+footer {
+  margin-top: rem-calc(50);
+  margin-bottom: rem-calc(20);
 }
 
 .white-bg {

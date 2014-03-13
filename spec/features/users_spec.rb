@@ -14,18 +14,25 @@ describe "User pages" do
   subject { page }
 
   describe 'index page' do
+    let(:user) { create(:user) }
+
     before do
       sign_in(create(:user))
-      create(:user)
-      create(:user)
       visit users_path
     end
 
     it { should have_selector('h3', text: 'All Users') }
 
-    it 'should list each user' do
-      User.all.each do |user|
-        page.should have_link("@#{user.name}", href: user_path(user.name))
+    describe 'pagination' do
+      before(:all) { 30.times { create(:user)} }
+      after(:all) { User.delete_all }
+
+      it { should have_selector('div.pagination') }
+
+      it 'should list each user' do
+        User.paginate(page: 1).each do |user|
+          page.should have_link("@#{user.name}", href: user_path(user.name))
+        end
       end
     end
 
