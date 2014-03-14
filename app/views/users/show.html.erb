@@ -2,6 +2,12 @@
 
 <div class="row">
   <%= render 'shared/sidebar' %>
+  <% if current_user == @user %>
+  <section>
+    <%= render 'shared/post_tweet_form' %>
+  </section>
+  <% end %>
+  </div>
 
   <div class="small-12 medium-8 medium-offset-1 columns white-bg">
     <h3>Tweets</h3>
@@ -15,7 +21,7 @@
       <% end %>
 
     <% else %>
-      <% @tweets_sorted.each do |tweet| %>
+      <% @user.tweets.each do |tweet| %>
         <div class="small-12 tweet clearfix">
 
           <%= gravatar_for(tweet.user, "left gravatar") %>

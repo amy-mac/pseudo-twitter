@@ -15,8 +15,8 @@ class TweetsController < ApplicationController
     if new_tweet.save
       redirect_to user_path(current_user.name)
     else
-      flash.now.alert = "Oops, something went wrong"
-      render :new
+      flash.alert = "Oops, something went wrong"
+      redirect_to root_path
     end
   end
 

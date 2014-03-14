@@ -2,6 +2,7 @@
 
 <div class="row">
   <%= render 'shared/sidebar' %>
+  </div>
 
   <div class="small-12 medium-8 medium-offset-1 columns white-bg">
     <h3><%= @title %></h3>
@@ -14,9 +15,9 @@
           <%= link_to gravatar_for(user, "left gravatar"), user_path(user.name) %>
 
           <strong><%= link_to "@#{user.name}", user_path(user.name) %></strong>
-
         </div>
       <% end %>
+      <%= will_paginate %>
     <% end %>
   </div>
 

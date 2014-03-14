@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:tweets).where(['name LIKE ?', params[:id]]).first
+    @tweet = current_user.tweets.build if signed_in?
   end
 
   def new
@@ -41,14 +42,14 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user = User.where(['name LIKE ?', params[:id]]).first
-    @users = @user.followers
+    @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def following
     @title = "Following"
     @user = User.where(['name LIKE ?', params[:id]]).first
-    @users = @user.followed_users
+    @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
   end
 end

@@ -31,7 +31,6 @@ describe 'Authentication' do
       end
 
       it { should have_link('Users', href: users_path) }
-      it { should have_link('New Tweet', href: new_tweet_path) }
       it { should have_link('Profile', href: user_path(user)) }
       it { should_not have_link('Sign In', href: new_session_path) }
 
@@ -47,7 +46,7 @@ describe 'Authentication' do
     describe 'for non signed-in users' do
       let(:user) { create(:user) }
 
-      describe 'in the users controller' do
+      describe 'in the Users controller' do
         describe 'visit the following page' do
           before { visit following_user_path(user) }
           it { should have_selector('h1', 'Sign In') }
@@ -58,6 +57,19 @@ describe 'Authentication' do
           it { should have_selector('h1', 'Sign In') }
         end
       end
+
+      # describe "in the Tweets controller" do
+
+        # describe "submitting to the create action" do
+          # before { post tweets_path }
+          # specify { response.should redirect_to(new_session_path) }
+        # end
+
+        # describe "submitting to the destroy action" do
+          # before { delete tweet_path(create(:tweet)) }
+          # specify { response.should redirect_to(signin_path) }
+        # end
+      # end
 
       # describe 'in the relationships controller' do
       #   describe 'submitting to the create action' do

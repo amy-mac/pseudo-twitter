@@ -67,9 +67,18 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { create(:user) }
+    let!(:tweet1) { create(:tweet, user_id: user.id) }
+    let!(:tweet2) { create(:tweet, user_id: user.id) }
+
     before { visit user_path(user.name) }
 
     it { should have_selector('h2',    text: "@#{user.name}") }
+
+    describe 'tweets' do
+      it { should have_content(tweet1.tweet_text) }
+      it { should have_content(tweet2.tweet_text) }
+      it { should have_content(user.tweets.count) }
+    end
 
     describe 'follow/unfollow buttons' do
       let(:other_user) { create(:user) }
@@ -85,23 +94,26 @@ describe "User pages" do
         end
 
         it 'should increment the other user\'s follower count' do
-          expect{
-            click_button 'Follow'
-          }.to change(other_user.followers, :count).by(1)
+          expect do
+            click_button "Follow"
+          end.to change(other_user.followers, :count).by(1)
         end
 
         describe 'toggling the button' do
-          before { click_button 'Follow' }
-          it { should have_selector('input', text: 'Unfollow') }
+          before { click_button "Follow" }
+          it { should have_selector("input", text: "Unfollow") }
         end
       end
 
       describe 'unfollowing a user' do
-        before { visit user_path(other_user) }
+        before do
+          visit user_path(other_user)
+          click_button "Follow"
+        end
 
         it 'should decrease the followed user count' do
           expect{
-            click_button 'Unfollow'
+            click_button "Unfollow"
           }.to change(user.followed_users, :count).by(-1)
         end
 
@@ -113,7 +125,7 @@ describe "User pages" do
 
         describe 'toggling the button' do
           before { click_button 'Unfollow' }
-          it { should have_selector('input', text: 'Follow') }
+          it { should have_selector("input", 'Follow') }
         end
       end
     end

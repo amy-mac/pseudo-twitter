@@ -1,17 +1,19 @@
 <% @user ||= current_user %>
 <div class="small-12 medium-3 columns white-bg">
   <aside>
-    <div class="text-center">
+    <section class="text-center">
       <%= gravatar_for @user, "gravatar", size: 150 %>
-    </div>
     <h2>@<%= @user.name %></h2>
 
     <ul class="no-bullet">
       <li><%= link_to 'Tweets', user_path(@user.name) %> <%= @user.tweets.count %></li>
-      <li id="following"><%= link_to 'Following', following_user_path(@user) %> <%= @user.followed_users.count %></li>
-      <li id="followers"><%= link_to 'Followers', followers_user_path(@user) %> <%= @user.followers.count %></li>
+      <li id="following"><%= link_to "Following #{@user.followed_users.count}", following_user_path(@user) %></li>
+      <li id="followers"><%= link_to "Followers #{@user.followers.count}", followers_user_path(@user) %></li>
     </ul>
+    </section>
 
-    <%= render 'shared/follow_form' if signed_in? %>
+    <section class="text-center">
+      <%= render 'shared/follow_form' if signed_in? %>
+    </section>
+
   </aside>
-</div>
