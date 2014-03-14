@@ -1,0 +1,2 @@
+$("#follow-form").html("<%= escape_javascript(render('shared/unfollow')) %>")
+$("#followers").html('<%= escape_javascript(link_to "Followers #{@user.followers.count}", followers_user_path(@user)) %>')
