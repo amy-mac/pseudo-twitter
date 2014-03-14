@@ -1237,13 +1237,21 @@ $topbar-link-bg-hover: #3C385A;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 
+#wrapper {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -15px;
+  padding: 0 0 50px;
+}
+
 aside {
   padding: rem-calc(15)
 }
 
 footer {
-  margin-top: rem-calc(50);
-  height: rem-calc(40);
+  bottom: 0;
+  height: rem-calc(50);
+  width: 100%;
 }
 
 .white-bg {
@@ -1290,5 +1298,10 @@ footer {
   -moz-border-radius: $global-rounded;
   border-radius: $global-rounded;
 }
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 
 @import 'foundation';

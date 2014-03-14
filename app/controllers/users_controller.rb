@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:show, :new, :create]
 
   def index
-    @users = User.paginate(page: params[:page])
+    respond_to do |format|
+      format.html { @users = User.paginate(page: params[:page]) }
+      format.json { render json: User.pluck(:name) }
+    end
   end
 
   def show

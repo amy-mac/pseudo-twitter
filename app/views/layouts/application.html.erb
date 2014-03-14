@@ -13,6 +13,7 @@
 
   <body>
 
+  <div id="wrapper">
     <%= render 'layouts/nav' %>
 
     <!-- error notices -->
@@ -40,11 +41,11 @@
     </div>
 
     <%= yield %>
-
+</div>
   <footer>
     <div class="row white-bg">
       <div class="small-12 medium-4 columns">
-        <p>By Amy MacKinnon</p>
+        <p>Copyright &copy Amy MacKinnon 2014</p>
       </div>
       <nav class="small-12 medium-8 columns">
         <ul class="right inline-list">
@@ -57,7 +58,7 @@
       </nav>
     </div>
   </footer>
-
+  
     <%= javascript_include_tag "application" %>
   </body>
 </html>

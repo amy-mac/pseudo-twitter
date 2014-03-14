@@ -14,7 +14,7 @@
     <hr>
 
     <% if @user.tweets.length == 0 %>
-      <% if signed_in? %>
+      <% if current_user == @user %>
         <p>You have no tweets yet. Why don't you create one?</p>
       <% else %>
         <p>This user has no tweets yet.</p>
