@@ -1,4 +1,5 @@
 <%= form_for @tweet do |f| %>
   <%= f.text_area :tweet_text, class: 'radius', rows: 6, placeholder: 'Compose your tweet', required: true %>
   <%= f.submit 'Tweet', class: 'button button-primary small radius' %>
+  <span class="right" id="characters"></span>
 <% end %>
